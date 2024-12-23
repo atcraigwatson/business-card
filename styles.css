@@ -1,70 +1,133 @@
-body {
-    margin: 20px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #2f4550;
+/* CSS Variables */
+:root {
+  /* Font Families */
+  --sans-serif-font-family: "Roboto", "Franklin Gothic Medium", Tahoma, sans-serif;
+  --serif-font-family: "Literata", Times, "Times New Roman", serif;
+  --script-font-family: "Hurricane", Times, "Times New Roman", serif;
+  /* Colours */
+  --dark-gray: #2f2f2f;
+  --base-gray: #3e3e3e;
+  --light-gray: #f4f3f3;
+  --gold: #ceba84;
 }
 
-.avatar {
-    max-width: 50%;
-    height: auto;
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  margin: 0;
+  padding: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--gold);
+  font-family: var(--sans-serif-font-family);
+  background-color: var(--dark-gray);
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+.card-wrapper {
+  width: 480px;
+  height: 260px;
+  margin: 0 auto;
+  background-color: transparent;
+  perspective: 1000px;
+}
+
+.card-wrapper-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.card-wrapper:hover .card-wrapper-inner {
+  transform: rotateY(180deg);
 }
 
 .card {
-    width: 400px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    text-align: center;
-    background: #586f7c;
-    color: #f4f4f9;
-    border-radius: 4px;
-    overflow: hidden;
-    box-shadow: 0 0 20px 2px #182328;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  background: var(--base-gray);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 8px #161616;
 }
 
-.card:hover .avatar {
-    overflow: hidden;
-    animation-name: animateAvatar;
-    animation-duration: 1s;
+#front,
+#back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
+
+#front {
+  justify-content: center;
+  align-items: center;
+}
+
+#front #initials {
+  color: var(--dark-gray);
+  font-family: var(--serif-font-family);
+  font-size: 200px;
+}
+
+#front #name {
+  position: absolute;
+  font-size: 72px;
+  font-family: var(--script-font-family);
+}
+
+#back {
+  transform: rotateY(180deg);
+}
+
+.avatar {
+  max-width: 50%;
+  height: auto;
 }
 
 .info {
-    padding: 20px;
+  padding: 20px;
+  width: 100%;
 }
 
 .name {
-    color: #586f7c;
-    padding: 6px 12px;
-    background-color: #b8dbd9;
-    border-radius: 3px;
+  font-size: 28px;
+  font-weight: 400;
+  font-family: var(--serif-font-family);
 }
 
-@keyframes animateAvatar {
-  0% {
-    transform: scale(1) rotate(0deg);
-    }
-  50% {
-    transform: scale(1.15) rotate(6deg);
-    }
-  0% {
-    transform: scale(1) rotate(0deg);
-    }
+.icons {
+  margin-top: 24px;
+  font-size: 24px;
 }
 
-/*
-Stretch goals:
-Find other ways you can personalize 
-the design of your business card, e.g.:
-- change the border(s)
-- add border radius
-- shuffle the layout
-- shadows        🤯
-- hover effects  🤯🤯
-- animations     🤯🤯🤯
-*/
+.icons a {
+  color: var(--gold);
+  padding: 2px 4px;
+  border-radius: 4px;
+}
 
-/*
-Final challenge:
-Download the code to your local computer and place it
-in a folder called "business-card"
-*/
+.icons a:hover {
+  background-color: var(--dark-gray);
+}
+
+.location {
+  font-weight: 400;
+}
